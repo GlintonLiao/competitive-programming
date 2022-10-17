@@ -1,12 +1,6 @@
-#include<iostream>
-#include<cstring>
-#include<algorithm>
-
-using namespace std;
-
 /*
- * String Hash
- */
+    String Hash
+*/
 typedef unsigned long long ULL;
 
 const int N = 100010, P = 131;
