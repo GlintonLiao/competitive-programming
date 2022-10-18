@@ -48,3 +48,22 @@ int reverseWord(string s) {
 
     return s;
 }
+
+/*
+    remove duplicate letter in string
+    need to sort it first
+    "AJIEFFBBA" -> "ABEFIJ"
+*/
+string removeDup(string s) {
+    // arrays can use this methods as well
+    sort(s.begin(), s.end());
+    s.erase(unique(s.begin(), s.end()), s.end());
+    return s;
+}
+
+/*
+    .size() will return an unsigned int
+    to use it inside function
+    will need to convert it into int
+*/
+(int)s.size();
