@@ -49,6 +49,7 @@ int reverseWord(string s) {
     return s;
 }
 
+
 /*
     remove duplicate letter in string
     need to sort it first
@@ -60,6 +61,7 @@ string removeDup(string s) {
     s.erase(unique(s.begin(), s.end()), s.end());
     return s;
 }
+
 
 /*
     .size() will return an unsigned int

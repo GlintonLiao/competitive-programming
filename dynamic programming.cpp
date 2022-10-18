@@ -17,8 +17,6 @@ int minDifficulty(vector<int> &w, int d)
                 f[i][j] = min(f[i][j], f[i - k][j - 1] + cost);
             }
         }
-    if (f[n][d] == INF)
-        return -1;
-    else
-        return f[n][d];
+    if (f[n][d] == INF) return -1;
+    else return f[n][d];
 }

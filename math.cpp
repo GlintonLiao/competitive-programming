@@ -5,6 +5,7 @@
 */
 typedef long long LL;
 
+
 /*
     Reverse a number
     123 -> 321
