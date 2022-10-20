@@ -7,13 +7,6 @@ typedef long long LL;
 
 
 /*
-  MOD
-*/
-(a + b) % MOD = ((a % MOD) + (b % MOD)) % MOD;
-(a * b) % MOD = ((a % MOD) * (b % MOD)) % MOD;
-
-
-/*
     Reverse a number
     123 -> 321
 */
@@ -35,7 +28,7 @@ int reverse(int num) {
 */
 vector<int> getPrimeFactor(int n) {
     vector<int> res;
-    for (int i = 2; i <= n % i; i++)
+    for (int i = 2; i <= n / i; i++)
         if (n % i == 0) {
             while (n % i == 0) n /= i;
             res.push_back(i);
@@ -93,6 +86,34 @@ int getFactor(vector<int>& nums) {
     long long res = 1;
     for (auto& p : primes) {
         res = res * (p.second + 1) % MOD;
+    }
+    return res;
+}
+
+
+/*
+    Roman numbers combinations < 4000
+*/
+string c[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+int vals[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+
+
+/*
+    Given a number n, from 1 to n
+    return how many numbers and n are prime to each other
+    (gcd(n1, n2) == 1)
+
+    6 -> 1, 2, 3, 4, 5, 6
+    1, 5 meets requirements
+    return 2
+*/
+int phi(int n) {
+    int res = n;
+    for (int i = 2; i <= n / i; i++) {
+        if (n % i == 0) {
+            res = res / i * (i - 1);
+            while (n % i == 0) n /= i;
+        }
     }
     return res;
 }
