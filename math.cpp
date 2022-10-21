@@ -53,6 +53,7 @@ void get_primes(){
     cout << cnt << endl;
 }
 
+
 /*
     Get every factor of n
 */
@@ -66,6 +67,7 @@ vector<int> getFactor(int n) {
     }
     return res;
 }
+
 
 /*
     Given a1, a2, ... an
@@ -116,4 +118,28 @@ int phi(int n) {
         }
     }
     return res;
+}
+
+
+/*
+    Exponentiation by squaring
+    return (a^b) mod p
+*/
+LL qmi(int a, int b, int p) {
+    LL res = 1 % p;
+    while (b) {
+        if (b & 1) res = res * a % p;
+        b >>= 1;
+        a = a * (LL)a % p;
+    }
+    return res;
+}
+
+/*
+    a / b % p == a * a^p-2 % p
+    when p is prime
+    return a^p-2 % p
+*/
+LL getReversePower(int a, int b, int p) {
+    return qmi(a, p - 2, p);
 }
