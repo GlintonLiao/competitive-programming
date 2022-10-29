@@ -36,3 +36,11 @@ bool cmp(const Edges& e1, const Edges& e2) {
     return e1.w < e2.w;
 }
 sort(edges, edges + m, cmp);
+
+
+/*
+    Sum all values in string or vector or array
+*/
+int getSum(vector<int>& arr) {
+    return reduce(arr.begin(), arr.end());
+}

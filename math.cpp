@@ -143,3 +143,9 @@ LL qmi(int a, int b, int p) {
 LL getReversePower(int a, int b, int p) {
     return qmi(a, p - 2, p);
 }
+
+/*
+    SG NIM ICG
+*/
+SG(0) = 0; // end point
+SG(x) = mex(SG(y1), SG(y2), ..., SG(yk));

@@ -38,3 +38,31 @@ long long countSubarrays(vector<int>& nums, int minK, int maxK) {
 
     return res;
 }
+
+
+/*
+    odd and even pointer
+    [1, 2, 2, 3, 4, 5, 6, 7]
+    odd pointer: 0 -> 3 -> 5 -> 7
+    even pointer: 1 -> 2 -> 4 -> 6
+*/
+void oddEvenPointer(vector<int>& nums, vector<int>& arr) {
+    int jArr[2]{};
+    for (auto& x : nums) {
+        int p = x % 2;    // 0 or 1
+        int &j = jArr[p]; // j will be first element when x is even
+        while (arr[j] % 2 != p) j++; // j will traverse through each group
+        cout << arr[j] << endl;
+    }
+}
+
+
+/*
+    sort an array according to something
+    without modifing the original array
+*/
+void sortArr(vector<int>& arr) {
+    vector<int> idx(arr.size());
+    iota(idx.begin(), idx.end(), 0);  // fill the vector from 0 to n - 1
+    sort(idx.begin(), idx.end(), [&](int a, int b) { return arr[i] > arr[j] });
+}
