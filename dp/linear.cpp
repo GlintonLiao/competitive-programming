@@ -39,3 +39,37 @@ int lcs(string a, string b) {
         }
     return f[n][m];
 }
+
+
+/*
+    Edit distance
+
+    Given string a, b
+
+    Each time we can add, delete or change a character
+    Return the minimum operation time to make a and b equal
+
+    f[i][j] indicates min time to make a[1...i], b[1...j] equal
+
+    1. a[i] == b[j], f[i][j] = f[i - 1][j - 1]
+    2. a[i] != b[j], f[i][j] = f[i - 1][j - 1] + 1 (change)
+    3. add a[i], f[i][j] = f[i][j - 1] + 1
+    3. delete a[i], f[i][j] = f[i - 1][j] + 1
+*/
+int editDistance(string a, string b) {
+    a = " " + a;
+    b = " " + b;
+    n = a.size(), m = b.size();
+    vector<vector<int>> f(n + 1, vector<int>(m + 1));
+
+    // init
+    for (int i = 1; i <= n; i++) f[i][0] = i;
+    for (int j = 1; j <= m; j++) f[0][j] = j;
+
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++) {
+            f[i][j] = max(f[i - 1][j], f[i][j - 1]) + 1;
+            f[i][j] = max(f[i][j], f[i - 1][j - 1]) + (a[i] == b[j] ? 0 : 1);
+        }
+    return f[n][m];
+}
