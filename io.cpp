@@ -44,3 +44,66 @@ sort(edges, edges + m, cmp);
 int getSum(vector<int>& arr) {
     return reduce(arr.begin(), arr.end());
 }
+
+/*
+    HashMap setting empty value
+*/
+void work(int item) {
+    unordered_map<int, int> mp;
+    mp[item]; // no need to set it to 0
+}
+
+/*
+    Deconstructing array or pair
+*/
+pair<int, int> cur = {1, 2};
+auto [x, y] = cur;
+// x is now 1, y is now 2
+// no need of cur.first and cur.second
+
+array<int, 3> arr = {1, 0, -1};
+auto [a, b, c] = arr;
+// a is now 1, b is now 0, c is now -1
+
+
+/*
+    Debug
+*/
+#define deb(x) cout << #x << " " << x 
+int ten = 10;
+deb(ten); // prints "ten = 10"
+
+
+/*
+    Even powerful debug marco
+*/
+#define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
+template<typename ...Args>
+void logger(string vars, Args&&... values) {
+    cout << vars << " = ";
+    string delim = "";
+    (..., (cout << delim << values, delim = ", "));
+}
+
+int xx = 3, yy = 10, xxyy = 103;
+deb(xx); // prints "xx = 3"
+deb(xx, yy, xxyy); // prints "xx, yy, xxyy = 3, 10, 103"
+
+
+/*
+    More Powerful Debug Macro with input and output
+*/
+template<typename F>
+auto debug_func(const F& func) {
+    return [func](auto &&...args) { // forward reference
+        cout << "input = ";
+        printer(args...);
+        auto res = func(forward<decltype(args)>(args)...);
+        cout << "res = " << res << endl;
+        return res;
+    };
+}
+
+debug_func(pow)(2, 3);
+// ^ this automatically prints
+// input = 2 3 res = 8
