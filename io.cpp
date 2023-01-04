@@ -82,7 +82,7 @@ template<typename ...Args>
 void logger(string vars, Args&&... values) {
     cout << vars << " = ";
     string delim = "";
-    (..., (cout << delim << values, delim = ", "));
+    (..., (cout << delim << values << endl, delim = ", "));
 }
 
 int xx = 3, yy = 10, xxyy = 103;
